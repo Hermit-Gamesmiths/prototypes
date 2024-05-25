@@ -29,9 +29,9 @@ enum JUMP_DIRECTIONS {UP = -1, DOWN = 1}
 @export var JOYSTICK_MOVEMENT := false
 
 ## Enable/Disable sprinting
-@export var ENABLE_SPRINT := false
+@export var ENABLE_SPRINT := true
 ## Enable/Disable Wall Jumping
-@export var ENABLE_WALL_JUMPING := false
+@export var ENABLE_WALL_JUMPING := true
 
 @export_group("Input Map Actions")
 # Input Map actions related to each movement direction, jumping, and sprinting.  Set each to their related
@@ -88,8 +88,27 @@ var jumping := false
 @onready var can_wall_jump: bool = ENABLE_WALL_JUMPING
 
 
+var hitbox_scene := load("res://hitbox.tscn")
+var inventory_full := false
+
+func _ready():
+	GameEvents.inventory_full.connect(on_inventory_status_updated)
+
+func on_inventory_status_updated(status: bool):
+	inventory_full = status
+	print(str(status))
+
 func _physics_process(delta: float) -> void:
-	physics_tick(delta)
+	if GameEvents.is_on_tapper_scene == false:
+		GameEvents.player_position.emit(global_position)
+		physics_tick(delta)
+		if Input.is_action_just_pressed("attack"):
+			attack()
+
+func attack():
+	var hitbox = hitbox_scene.instantiate()
+	#hitbox.global_position = global_position
+	add_child(hitbox)
 
 
 ## Overrideable physics process used by the controller that calls whatever functions should be called
@@ -264,3 +283,20 @@ func buffer_jump() -> void:
 func coyote_time() -> void:
 	await get_tree().create_timer(COYOTE_TIMER).timeout
 	can_jump = false
+
+
+
+# Function to add a pickup to the inventory
+func addPickup(combination):
+	if GameEvents.inventory.has(combination):
+		GameEvents.inventory[combination] += 1
+	else:
+		GameEvents.inventory[combination] = 1
+
+# Function to remove a pickup from the inventory
+func removePickup(combination):
+	if GameEvents.inventory.has(combination) and GameEvents.inventory[combination] > 0:
+		GameEvents.inventory[combination] -= 1
+	else:
+		print("No pickups of color combination", combination, "to remove")
+
