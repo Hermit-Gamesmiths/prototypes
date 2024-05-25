@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp3xxh5g0xbt2"]
+
+[ext_resource type="Script" path="res://enemy_body_layer.gd" id="1_51fl6"]
+[ext_resource type="PackedScene" uid="uid://cq2aue6xbg3ai" path="res://enemy_body.tscn" id="1_tcidr"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_51fl6")
+
+[node name="ChopItem" parent="." instance=ExtResource("1_tcidr")]
+position = Vector2(743, 371)
+scale = Vector2(1.7, 1.7)

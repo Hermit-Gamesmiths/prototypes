@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgrwla3w253vf"]
+
+[ext_resource type="Script" path="res://src/Beast.gd" id="1_4ajwg"]
+[ext_resource type="Texture2D" uid="uid://v62hdb58xo8s" path="res://beast.png" id="2_bq6la"]
+[ext_resource type="PackedScene" uid="uid://cp31aec6ef7f3" path="res://inventory_item.tscn" id="3_ackxr"]
+
+[node name="Beast" type="Node2D" groups=["beast"]]
+script = ExtResource("1_4ajwg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_bq6la")
+
+[node name="InventoryItem" parent="." instance=ExtResource("3_ackxr")]
+offset_top = -56.0
+offset_bottom = -16.0

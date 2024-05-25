@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp31aec6ef7f3"]
+
+[ext_resource type="Script" path="res://src/InventoryItem.gd" id="1_wq6sm"]
+[ext_resource type="Texture2D" uid="uid://c4f74rvg6maog" path="res://drop_ui.png" id="2_41xba"]
+
+[node name="InventoryItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wq6sm")
+
+[node name="Primary" type="Sprite2D" parent="."]
+texture = ExtResource("2_41xba")
+hframes = 2
+
+[node name="Secondary" type="Sprite2D" parent="."]
+texture = ExtResource("2_41xba")
+hframes = 2
+frame = 1

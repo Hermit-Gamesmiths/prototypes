@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp3m50ir5cl4u"]
+
+[ext_resource type="Texture2D" uid="uid://c0e4ed76q12lj" path="res://coin.png" id="1_61s5h"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ocv0b"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_rloq1"]
+_data = [Vector2(0.442568, 0.576087), 0.0, 0.0, 0, 0, Vector2(0.851351, 0.0652174), 0.0, 0.0, 0, 0, Vector2(0.932432, 0.13587), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_tcspp"]
+min_value = 0.99
+max_value = 389.86
+_data = [Vector2(0.0878378, 0.99), 0.0, 0.0, 0, 0, Vector2(0.489865, 0.782609), 0.0, 0.0, 0, 0, Vector2(0.581081, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_6j75s"]
+curve_x = SubResource("Curve_rloq1")
+curve_y = SubResource("Curve_tcspp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t1uw6"]
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.671
+velocity_pivot = Vector3(0, 15, 0)
+direction = Vector3(0, -1, 0)
+spread = 82.059
+directional_velocity_min = -168.41
+directional_velocity_max = 136.53
+directional_velocity_curve = SubResource("CurveXYZTexture_6j75s")
+gravity = Vector3(0, 5, 0)
+anim_speed_min = 0.84
+anim_speed_max = 1.7
+
+[node name="coin" type="GPUParticles2D"]
+z_index = 1000
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_ocv0b")
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_t1uw6")
+texture = ExtResource("1_61s5h")
+one_shot = true

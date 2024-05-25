@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcasoexcn3o28"]
+
+[ext_resource type="Texture2D" uid="uid://dqu1ql7p7ak6v" path="res://atk.png" id="1_7o8s1"]
+[ext_resource type="Script" path="res://hitbox.gd" id="1_uypaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ayyoo"]
+radius = 34.2345
+
+[node name="Hitbox" type="Area2D" groups=["hitbox"]]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_uypaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.0494277
+shape = SubResource("CircleShape2D_ayyoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.411765)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7o8s1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.411765)
+rotation = 2.52541
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_7o8s1")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://df0ykhx58s4p5"]
+
+[ext_resource type="Script" path="res://src/FeedArea.gd" id="1_6o7lh"]
+[ext_resource type="Texture2D" uid="uid://bs6d80p235gtu" path="res://customers.png" id="2_s3s3g"]
+[ext_resource type="Texture2D" uid="uid://knikmjs6c6du" path="res://store.png" id="3_vvy80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1suav"]
+size = Vector2(50, 20)
+
+[node name="FeedWindow" type="Node2D"]
+script = ExtResource("1_6o7lh")
+
+[node name="FeedArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FeedArea"]
+shape = SubResource("RectangleShape2D_1suav")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
+texture = ExtResource("2_s3s3g")
+hframes = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 8)
+texture = ExtResource("2_s3s3g")
+hframes = 3
+
+[node name="store" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("3_vvy80")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -59.0
+offset_right = 78.0
+offset_bottom = -36.0
+theme_override_font_sizes/font_size = 9
+text = "🌟🌟🌟🌟🌟"

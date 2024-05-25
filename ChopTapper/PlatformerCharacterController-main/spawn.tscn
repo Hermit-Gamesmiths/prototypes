@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://po53s6jefd86"]
+
+[ext_resource type="Script" path="res://Spawn.gd" id="1_31ltp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8n0hc"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+angular_velocity_min = 216.54
+angular_velocity_max = 433.08
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 18.05
+linear_accel_max = 24.06
+
+[node name="Spawn" type="Marker2D"]
+script = ExtResource("1_31ltp")
+
+[node name="sparks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_8n0hc")
+one_shot = true

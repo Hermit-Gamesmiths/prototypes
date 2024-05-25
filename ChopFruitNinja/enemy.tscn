@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyajtd2vmike8"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_oh75x"]
+[ext_resource type="Texture2D" uid="uid://d4cqpevfx3xkt" path="res://enemy-sheet.png" id="2_fnskn"]
+[ext_resource type="PackedScene" uid="uid://cb4lqvkv48t5c" path="res://hurtbox.tscn" id="2_rxu2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4m3t"]
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_ebsd3"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(2, 2), Vector2(-4, -4), Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0lsl"]
+_data = {
+"hurt": SubResource("Animation_ebsd3")
+}
+
+[node name="Enemy" type="StaticBody2D"]
+script = ExtResource("1_oh75x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m4m3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fnskn")
+hframes = 3
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_rxu2i")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m0lsl")
+}

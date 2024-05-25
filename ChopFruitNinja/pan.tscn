@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdnedrccmboas"]
+
+[ext_resource type="Script" path="res://src/Pan.gd" id="1_vd0mg"]
+[ext_resource type="Texture2D" uid="uid://cbnfo310ybwpc" path="res://crockpot.png" id="2_3wm6e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_io6ye"]
+size = Vector2(30, 20)
+
+[node name="Pan" type="Area2D"]
+script = ExtResource("1_vd0mg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_io6ye")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("2_3wm6e")
+hframes = 5

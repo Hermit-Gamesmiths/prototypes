@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxnxe78ov0dic"]
+
+[ext_resource type="Script" path="res://src/cut_area.gd" id="1_wd7w5"]
+[ext_resource type="Shader" path="res://src/dotted_line.gdshader" id="2_fmf54"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_agvbl"]
+resource_local_to_scene = true
+radius = 34.44
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj4ii"]
+resource_local_to_scene = true
+shader = ExtResource("2_fmf54")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/diameter = 1.0
+shader_parameter/thickness = 0.05
+shader_parameter/frequency = 10.0
+shader_parameter/phase = 0.0
+
+[node name="CutArea" type="Area2D" groups=["cut_area"]]
+script = ExtResource("1_wd7w5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_agvbl")
+
+[node name="dotted_line" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dj4ii")
+offset_left = -36.0
+offset_top = -34.0
+offset_right = 34.0
+offset_bottom = 36.0

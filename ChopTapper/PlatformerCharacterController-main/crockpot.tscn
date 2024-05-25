@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dapgeka7edwi"]
+
+[ext_resource type="Script" path="res://src/Crockpot.gd" id="1_jw7l6"]
+[ext_resource type="Texture2D" uid="uid://cawhifqwbpyhs" path="res://crockpot.png" id="2_ocroy"]
+[ext_resource type="Texture2D" uid="uid://blp4rdolyqehg" path="res://tracker1.png" id="3_ejqao"]
+[ext_resource type="Texture2D" uid="uid://gpqmtn86ano7" path="res://tracker3.png" id="4_mom5r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o45p6"]
+
+[node name="Crockpot" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jw7l6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o45p6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ocroy")
+hframes = 5
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -8.0
+offset_top = -17.0
+offset_right = 24.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+max_value = 10.0
+fill_mode = 4
+texture_under = ExtResource("3_ejqao")
+texture_progress = ExtResource("4_mom5r")

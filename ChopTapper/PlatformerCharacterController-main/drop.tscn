@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://dklld5cver56p"]
+
+[ext_resource type="Script" path="res://drop.gd" id="1_3j4gk"]
+[ext_resource type="Texture2D" uid="uid://dy3mxoi6i83xw" path="res://drop.png" id="2_gwpri"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_017di"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4, 4, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mocsk"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vutuk"]
+radius = 62.0
+
+[node name="drop" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_3j4gk")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -1)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_017di")
+lifetime = 0.2
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.215686, 1, 1, 1)
+texture = ExtResource("2_gwpri")
+hframes = 2
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0941176, 1, 1)
+texture = ExtResource("2_gwpri")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mocsk")
+
+[node name="ProximityDetect" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityDetect"]
+shape = SubResource("CircleShape2D_vutuk")
