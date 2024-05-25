@@ -13,7 +13,6 @@ func _process(delta):
 
 
 func _on_win():
-	$"../TapperView".visible = true
 	await get_tree().create_timer(3.0).timeout
 	visible = true
 

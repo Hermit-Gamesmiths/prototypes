@@ -6,8 +6,8 @@ enum ColorType { RED, GREEN, GREY }
 var value: int
 var health: int
 var color_choice
-var base_speed := 6
-var speed := 6
+var base_speed := 3
+var speed := base_speed
 
 var run_away := false
 var run_away_mult := 20.0
