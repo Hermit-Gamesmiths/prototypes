@@ -4,6 +4,7 @@ extends Marker2D
 var enemy_scene := load("res://enemy.tscn")
 var enemy_instance = null
 var spawning := true
+const SPAWN_TIME := 35.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_enemy()
@@ -33,5 +34,5 @@ func _process(delta):
 				spawning = false
 
 func start_spawn_timer():
-	spawn_interval = randf_range(20, 25)
+	spawn_interval = randf_range(SPAWN_TIME-5, SPAWN_TIME+5)
 	spawn_timer = spawn_interval
