@@ -19,6 +19,10 @@ config/icon="res://src/icon.svg"
 
 GameEvents="*res://GameEvents.gd"
 
+[display]
+
+window/stretch/scale=2.0
+
 [input]
 
 up={
