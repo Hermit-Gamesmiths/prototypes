@@ -29,7 +29,7 @@ func _process(delta):
 		if currentMarker != m0:
 			fling_food()
 		else:
-			add_food_to_crockpot()
+			add_food_to_beast()
 	
 
 func changeMarker(direction):
@@ -103,4 +103,6 @@ func add_food_to_crockpot():
 	
 	$"../Crockpot".add_food()
 	
-	
+
+func add_food_to_beast():
+	$"../Beast2".add_food()

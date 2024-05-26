@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8trdu3hd4t3o"]
+
+[ext_resource type="Script" path="res://TheBeast.gd" id="1_rvetl"]
+[ext_resource type="Texture2D" uid="uid://c6d4wyovec8yf" path="res://thebeast.png" id="2_6ocyx"]
+[ext_resource type="Texture2D" uid="uid://blp4rdolyqehg" path="res://tracker1.png" id="3_cxjde"]
+[ext_resource type="Texture2D" uid="uid://gpqmtn86ano7" path="res://tracker3.png" id="4_17tmm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o45p6"]
+
+[node name="Beast2" type="Area2D"]
+position = Vector2(832, 112)
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_rvetl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o45p6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-88, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("2_6ocyx")
+hframes = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = -200.0
+offset_top = -64.0
+offset_right = -168.0
+offset_bottom = -32.0
+max_value = 20.0
+fill_mode = 4
+texture_under = ExtResource("3_cxjde")
+texture_progress = ExtResource("4_17tmm")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+modulate = Color(0.12549, 0.427451, 1, 1)
+offset_left = -8.0
+offset_top = -64.0
+offset_right = 24.0
+offset_bottom = -32.0
+max_value = 60.0
+fill_mode = 4
+texture_under = ExtResource("3_cxjde")
+texture_progress = ExtResource("4_17tmm")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -216.0
+offset_top = -88.0
+offset_right = -148.0
+offset_bottom = -65.0
+text = "Stomach"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -96.0
+offset_right = 44.0
+offset_bottom = -73.0
+text = "Patience"

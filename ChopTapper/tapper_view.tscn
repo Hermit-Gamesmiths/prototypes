@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dy0f0x5xm4jde"]
+[gd_scene load_steps=26 format=3 uid="uid://dy0f0x5xm4jde"]
 
 [ext_resource type="Script" path="res://src/TapperView.gd" id="1_krxen"]
 [ext_resource type="PackedScene" uid="uid://cgrwla3w253vf" path="res://beast.tscn" id="2_sv313"]
@@ -12,8 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://blp4rdolyqehg" path="res://tracker1.png" id="9_nm0kk"]
 [ext_resource type="Texture2D" uid="uid://jdfgyek4xorl" path="res://tracker2.png" id="10_ehs12"]
 [ext_resource type="Texture2D" uid="uid://gpqmtn86ano7" path="res://tracker3.png" id="11_pspme"]
-[ext_resource type="Script" path="res://CrockpotBeast.gd" id="13_c2rbk"]
-[ext_resource type="Texture2D" uid="uid://cawhifqwbpyhs" path="res://crockpot.png" id="14_llw5a"]
+[ext_resource type="PackedScene" uid="uid://c8trdu3hd4t3o" path="res://beast_2.tscn" id="13_q8m0d"]
 [ext_resource type="Script" path="res://StockPot.gd" id="15_lf7rh"]
 [ext_resource type="Texture2D" uid="uid://ci5evqo8qj4q3" path="res://stockpot.png" id="16_r0815"]
 [ext_resource type="Texture2D" uid="uid://dvhf34bgew8tv" path="res://arrow.png" id="17_c27re"]
@@ -46,7 +45,7 @@ size = Vector2(48, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o45p6"]
 
-[node name="TapperView" type="CanvasLayer"]
+[node name="TapperView" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_krxen")
 
@@ -146,7 +145,7 @@ script = ExtResource("8_e5hxx")
 shape = SubResource("RectangleShape2D_wjl65")
 debug_color = Color(0.854902, 0.309804, 0.513726, 0.419608)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="WinningCounter" type="TextureProgressBar" parent="."]
 offset_left = 176.0
 offset_top = 504.0
 offset_right = 216.0
@@ -159,7 +158,7 @@ texture_over = ExtResource("10_ehs12")
 texture_progress = ExtResource("11_pspme")
 script = ExtResource("9_j804e")
 
-[node name="Label" type="Label" parent="TextureProgressBar"]
+[node name="Label" type="Label" parent="WinningCounter"]
 layout_mode = 0
 offset_left = 36.0
 offset_top = 4.0
@@ -167,58 +166,16 @@ offset_right = 115.0
 offset_bottom = 27.0
 text = "< Fill to win"
 
-[node name="Area2D" type="Area2D" parent="TextureProgressBar"]
+[node name="Area2D" type="Area2D" parent="WinningCounter"]
 position = Vector2(0, 8)
 collision_layer = 16
 collision_mask = 32
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureProgressBar/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinningCounter/Area2D"]
 shape = SubResource("RectangleShape2D_hleo4")
 debug_color = Color(0, 0.627451, 0.505882, 0.419608)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
-offset_left = 1000.0
-offset_top = 152.0
-offset_right = 1004.0
-offset_bottom = 179.0
-max_value = 30.0
-step = 1.0
-fill_mode = 1
-
-[node name="Area2D" type="Area2D" parent="ProgressBar"]
-position = Vector2(0, 8)
-collision_layer = 16
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProgressBar/Area2D"]
-shape = SubResource("RectangleShape2D_hleo4")
-debug_color = Color(0, 0.627451, 0.505882, 0.419608)
-
-[node name="Crockpot" type="Area2D" parent="."]
-visible = false
-position = Vector2(832, 112)
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("13_c2rbk")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Crockpot"]
-shape = SubResource("RectangleShape2D_o45p6")
-
-[node name="Sprite2D" type="Sprite2D" parent="Crockpot"]
-position = Vector2(0, -2)
-scale = Vector2(2, 2)
-texture = ExtResource("14_llw5a")
-hframes = 5
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Crockpot"]
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
-max_value = 15.0
-fill_mode = 4
-texture_under = ExtResource("9_nm0kk")
-texture_progress = ExtResource("11_pspme")
+[node name="Beast2" parent="." instance=ExtResource("13_q8m0d")]
 
 [node name="StockPot" type="Area2D" parent="."]
 position = Vector2(832, 112)

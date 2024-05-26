@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://5jekbq6dldgv"]
+[gd_scene load_steps=43 format=3 uid="uid://5jekbq6dldgv"]
 
 [ext_resource type="Script" path="res://src/World.gd" id="1_c283v"]
 [ext_resource type="Texture2D" uid="uid://dntl3c7y1qee4" path="res://src/sprites/Tileset.png" id="1_syfs0"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cawhifqwbpyhs" path="res://crockpot.png" id="20_iqg8t"]
 [ext_resource type="Script" path="res://StockPot.gd" id="21_cdsi3"]
 [ext_resource type="Texture2D" uid="uid://ci5evqo8qj4q3" path="res://stockpot.png" id="22_fvu7f"]
+[ext_resource type="PackedScene" uid="uid://c8trdu3hd4t3o" path="res://beast_2.tscn" id="23_ok6u6"]
 [ext_resource type="Texture2D" uid="uid://dvhf34bgew8tv" path="res://arrow.png" id="23_p4yfl"]
 [ext_resource type="Script" path="res://src/player_scene_toggle.gd" id="27_h7mx1"]
 [ext_resource type="Script" path="res://src/tapper_camera.gd" id="28_85ri7"]
@@ -837,8 +838,11 @@ offset_right = 200.0
 offset_bottom = 240.0
 scale = Vector2(0.5, 0.5)
 
+[node name="Beast2" parent="SubViewport/TapperView" instance=ExtResource("23_ok6u6")]
+
 [node name="Camera2D2" type="Camera2D" parent="SubViewport"]
 position = Vector2(-640, 208)
+zoom = Vector2(0.8, 0.8)
 
 [node name="drop" parent="." instance=ExtResource("4_xvj4h")]
 position = Vector2(472, 56)
