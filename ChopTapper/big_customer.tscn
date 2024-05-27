@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://daevpj3h08h2l"]
+[gd_scene load_steps=10 format=3 uid="uid://daevpj3h08h2l"]
 
 [ext_resource type="Script" path="res://big_customer.gd" id="1_q18y1"]
 [ext_resource type="Texture2D" uid="uid://bfdn3os8x4ygy" path="res://custommers.png" id="2_v4xkf"]
@@ -9,6 +9,45 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbsh0"]
 size = Vector2(32, 32)
 
+[sub_resource type="Animation" id="Animation_8ougt"]
+resource_name = "shake"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.261799, 0.261799]
+}
+
+[sub_resource type="Animation" id="Animation_24wyc"]
+resource_name = "walk"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uheob"]
+_data = {
+"shake": SubResource("Animation_8ougt"),
+"walk": SubResource("Animation_24wyc")
+}
+
 [node name="BigCustomer" type="Area2D" groups=["customer"]]
 process_mode = 3
 collision_layer = 16
@@ -17,6 +56,7 @@ script = ExtResource("1_q18y1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -15)
+rotation = -0.261799
 scale = Vector2(2, 2)
 texture = ExtResource("2_v4xkf")
 hframes = 4
@@ -50,3 +90,8 @@ hframes = 2
 position = Vector2(13, -75)
 texture = ExtResource("5_f1h1l")
 hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uheob")
+}

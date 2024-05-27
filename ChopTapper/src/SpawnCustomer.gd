@@ -3,7 +3,7 @@ extends Marker2D
 
 var customer_scene := preload("res://customer.tscn")
 var big_customer_scene := preload("res://big_customer.tscn")
-var average_wait_time := 15.0
+var average_wait_time := 20.0
 var wait_time := 5.0
 var first_wave_spawned := false
 
