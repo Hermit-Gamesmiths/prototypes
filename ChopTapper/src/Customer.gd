@@ -20,6 +20,12 @@ var eaten := false
 var end_game := false
 var skip_food := false
 
+var frozen := false
+var freeze_time := 4.0
+
+var shake = false
+var shake_time := 1.0
+
 func _ready():
 	GameEvents.lose_game.connect(on_game_lose)
 	GameEvents.win_game.connect(on_game_win)
@@ -38,7 +44,11 @@ func _ready():
 			color_choice = ColorType.GREY
 			food_preference = GameEvents.ColorCombo.GREY_GREY
 			food_preference2 = GameEvents.ColorCombo.SUPER_GREY
+	$Sprite2D.frame = randf_range(0, 4)
+	reset_sprite_color()
 
+
+func reset_sprite_color():
 	match color_choice:
 		ColorType.RED:
 			$Sprite2D.modulate = Color(1, 0, 0)  # Red
@@ -46,15 +56,20 @@ func _ready():
 			$Sprite2D.modulate = Color(0, 1, 0)  # Green
 		ColorType.GREY:
 			$Sprite2D.modulate = Color(0.5, 0.5, 0.5)  # Grey
-	$Sprite2D.frame = randf_range(0, 4)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not run_away:
+	if not run_away and not frozen:
 		position.x += speed * delta
-	else:
+	elif run_away:
 		position.x -= (speed * run_away_mult) * delta
+
+		
+	if Input.is_action_just_pressed("freeze"):
+		freeze()
+		
 
 
 func _on_area_entered(area):
@@ -109,3 +124,18 @@ func on_game_lose():
 	$face.frame = 0
 	$face.visible = true
 	speed = 0
+
+
+func freeze():
+	frozen = true
+	$face.frame = 2
+	$face.visible = true
+	$Sprite2D.modulate = Color(0.0, 0.5, 1.0)
+	await get_tree().create_timer(freeze_time).timeout
+	$AnimationPlayer.play("shake")
+	await get_tree().create_timer(shake_time).timeout
+	$AnimationPlayer.play("walk")
+	frozen = false
+	shake = false
+	reset_sprite_color()
+	$face.visible = false

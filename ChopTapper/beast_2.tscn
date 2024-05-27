@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8trdu3hd4t3o"]
+[gd_scene load_steps=6 format=3 uid="uid://bme3xq0p2cinf"]
 
 [ext_resource type="Script" path="res://TheBeast.gd" id="1_rvetl"]
 [ext_resource type="Texture2D" uid="uid://c6d4wyovec8yf" path="res://thebeast.png" id="2_6ocyx"]
