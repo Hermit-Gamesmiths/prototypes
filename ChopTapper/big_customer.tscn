@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://daevpj3h08h2l"]
+
+[ext_resource type="Script" path="res://big_customer.gd" id="1_q18y1"]
+[ext_resource type="Texture2D" uid="uid://bfdn3os8x4ygy" path="res://custommers.png" id="2_v4xkf"]
+[ext_resource type="Texture2D" uid="uid://clxn5sud4687i" path="res://customeremotion.png" id="3_02gpj"]
+[ext_resource type="PackedScene" uid="uid://bp3m50ir5cl4u" path="res://coin.tscn" id="4_a3ltn"]
+[ext_resource type="Texture2D" uid="uid://xjsb2acbwc7x" path="res://customer_feed.png" id="5_f1h1l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbsh0"]
+size = Vector2(32, 32)
+
+[node name="BigCustomer" type="Area2D" groups=["customer"]]
+process_mode = 3
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("1_q18y1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("2_v4xkf")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+process_mode = 3
+shape = SubResource("RectangleShape2D_qbsh0")
+
+[node name="face" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -60)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_02gpj")
+hframes = 3
+
+[node name="coin" parent="." instance=ExtResource("4_a3ltn")]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-11, -75)
+texture = ExtResource("5_f1h1l")
+hframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+position = Vector2(1, -75)
+texture = ExtResource("5_f1h1l")
+hframes = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
+position = Vector2(13, -75)
+texture = ExtResource("5_f1h1l")
+hframes = 2

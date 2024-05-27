@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bme3xq0p2cinf"]
+[gd_scene load_steps=6 format=3 uid="uid://c8trdu3hd4t3o"]
 
 [ext_resource type="Script" path="res://TheBeast.gd" id="1_rvetl"]
 [ext_resource type="Texture2D" uid="uid://c6d4wyovec8yf" path="res://thebeast.png" id="2_6ocyx"]
@@ -23,6 +23,7 @@ texture = ExtResource("2_6ocyx")
 hframes = 2
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
 offset_left = -200.0
 offset_top = -64.0
 offset_right = -168.0
@@ -33,6 +34,7 @@ texture_under = ExtResource("3_cxjde")
 texture_progress = ExtResource("4_17tmm")
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+visible = false
 modulate = Color(0.12549, 0.427451, 1, 1)
 offset_left = -8.0
 offset_top = -64.0
@@ -44,6 +46,7 @@ texture_under = ExtResource("3_cxjde")
 texture_progress = ExtResource("4_17tmm")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -216.0
 offset_top = -88.0
 offset_right = -148.0
@@ -51,6 +54,7 @@ offset_bottom = -65.0
 text = "Stomach"
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 offset_left = -24.0
 offset_top = -96.0
 offset_right = 44.0

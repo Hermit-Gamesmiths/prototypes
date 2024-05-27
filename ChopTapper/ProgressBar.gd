@@ -22,5 +22,5 @@ func _on_area_entered(area):
 
 func _on_money_earned():
 	value += 1
-	#if value >= max_value:
-		#GameEvents.win_game.emit()
+	if value >= max_value:
+		GameEvents.win_game.emit()

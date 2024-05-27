@@ -22,6 +22,7 @@ signal inventory_full(bool)
 
 signal win_game
 signal lose_game
+signal freeze(color_to_freeze)
 
 var inventory = []
 
@@ -30,12 +31,16 @@ var is_on_tapper_scene := false
 var inventory_signalled := false
 
 
-var amount_until_purple := 30
+var amount_until_purple := 15
 var purple_counter := amount_until_purple
 
 signal earned_money
 signal player_toggled_tapper
 var money_earned := 0
+
+var customer_count_until_big := 3
+var big_customer_counter := 0
+
 func _ready():
 	earned_money.connect(_on_money_earned)
 	player_toggled_tapper.connect(_on_player_toggle)

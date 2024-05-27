@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://5jekbq6dldgv"]
+[gd_scene load_steps=19 format=3 uid="uid://5jekbq6dldgv"]
 
 [ext_resource type="Script" path="res://src/World.gd" id="1_c283v"]
 [ext_resource type="Texture2D" uid="uid://dntl3c7y1qee4" path="res://src/sprites/Tileset.png" id="1_syfs0"]
@@ -7,27 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dklld5cver56p" path="res://drop.tscn" id="4_xvj4h"]
 [ext_resource type="Script" path="res://src/HUD.gd" id="5_y38q0"]
 [ext_resource type="PackedScene" uid="uid://cp31aec6ef7f3" path="res://inventory_item.tscn" id="6_7mt4i"]
-[ext_resource type="Script" path="res://src/TapperView.gd" id="7_hq60g"]
+[ext_resource type="PackedScene" uid="uid://dy0f0x5xm4jde" path="res://tapper_view.tscn" id="7_wfv7y"]
 [ext_resource type="PackedScene" uid="uid://dapgeka7edwi" path="res://crockpot.tscn" id="8_mmhhi"]
-[ext_resource type="PackedScene" uid="uid://cgrwla3w253vf" path="res://beast.tscn" id="8_nc6p0"]
-[ext_resource type="Script" path="res://src/SpawnCustomer.gd" id="9_q4wi0"]
 [ext_resource type="Script" path="res://src/win.gd" id="9_sqk68"]
-[ext_resource type="Script" path="res://die.gd" id="10_fff0y"]
 [ext_resource type="Script" path="res://src/lose.gd" id="10_in2w3"]
 [ext_resource type="Texture2D" uid="uid://d130tl4mdtkgf" path="res://bar.png" id="11_7sggw"]
-[ext_resource type="Script" path="res://SatisfiedCustomers.gd" id="12_a6tvt"]
-[ext_resource type="Texture2D" uid="uid://3jomkxlidtar" path="res://trash.png" id="13_6e0qq"]
-[ext_resource type="Script" path="res://delete.gd" id="14_ceg2y"]
-[ext_resource type="Texture2D" uid="uid://blp4rdolyqehg" path="res://tracker1.png" id="15_hv7bl"]
-[ext_resource type="Texture2D" uid="uid://jdfgyek4xorl" path="res://tracker2.png" id="16_gvjur"]
-[ext_resource type="Texture2D" uid="uid://gpqmtn86ano7" path="res://tracker3.png" id="17_28xlx"]
-[ext_resource type="Script" path="res://ProgressBar.gd" id="18_bwbk4"]
-[ext_resource type="Script" path="res://CrockpotBeast.gd" id="19_0veql"]
-[ext_resource type="Texture2D" uid="uid://cawhifqwbpyhs" path="res://crockpot.png" id="20_iqg8t"]
-[ext_resource type="Script" path="res://StockPot.gd" id="21_cdsi3"]
-[ext_resource type="Texture2D" uid="uid://ci5evqo8qj4q3" path="res://stockpot.png" id="22_fvu7f"]
-[ext_resource type="PackedScene" uid="uid://bme3xq0p2cinf" path="res://beast_2.tscn" id="23_ok6u6"]
-[ext_resource type="Texture2D" uid="uid://dvhf34bgew8tv" path="res://arrow.png" id="23_p4yfl"]
 [ext_resource type="Script" path="res://src/player_scene_toggle.gd" id="27_h7mx1"]
 [ext_resource type="Script" path="res://src/tapper_camera.gd" id="28_85ri7"]
 [ext_resource type="Script" path="res://src/camera_view.gd" id="30_acfip"]
@@ -513,33 +497,6 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)
 sources/0 = SubResource("TileSetAtlasSource_hc8u3")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qiwu"]
-size = Vector2(20, 560)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wt8gi"]
-texture = ExtResource("11_7sggw")
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_ivcvc"]
-sources/0 = SubResource("TileSetAtlasSource_wt8gi")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bly2"]
-size = Vector2(20, 656)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_58hl1"]
-size = Vector2(48, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjl65"]
-size = Vector2(48, 688)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hleo4"]
-size = Vector2(48, 48)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o45p6"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_matll"]
 size = Vector2(72, 20)
 
@@ -625,224 +582,13 @@ position = Vector2(160, 280)
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(700, 350)
 
-[node name="TapperView" type="Node2D" parent="SubViewport"]
-process_mode = 3
-position = Vector2(-1104, -24)
-scale = Vector2(0.7, 0.7)
-script = ExtResource("7_hq60g")
-
-[node name="ColorRect" type="ColorRect" parent="SubViewport/TapperView"]
-clip_contents = true
-custom_minimum_size = Vector2(1000, 500)
-offset_left = 96.0
-offset_top = 72.0
-offset_right = 1096.0
-offset_bottom = 572.0
-color = Color(0.258824, 0.258824, 0.258824, 0.937255)
-
-[node name="Beast" parent="SubViewport/TapperView" instance=ExtResource("8_nc6p0")]
-position = Vector2(856, 304)
-
-[node name="Marker2D" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(808, 184)
-
-[node name="Marker2D2" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(856, 304)
-
-[node name="Marker2D3" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(912, 448)
-
-[node name="Marker2D4" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(976, 528)
-
-[node name="Marker2D5" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(896, 112)
-
-[node name="SpawnCustomer" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(192, 178)
-script = ExtResource("9_q4wi0")
-
-[node name="SpawnCustomer2" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(192, 306)
-script = ExtResource("9_q4wi0")
-
-[node name="SpawnCustomer3" type="Marker2D" parent="SubViewport/TapperView"]
-position = Vector2(192, 434)
-script = ExtResource("9_q4wi0")
-
-[node name="die" type="Area2D" parent="SubViewport/TapperView"]
-position = Vector2(832, 304)
-rotation = -0.400933
-collision_layer = 32
-collision_mask = 16
-script = ExtResource("10_fff0y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/die"]
-shape = SubResource("RectangleShape2D_1qiwu")
-
-[node name="TileMap" type="TileMap" parent="SubViewport/TapperView"]
-tile_set = SubResource("TileSet_ivcvc")
-format = 2
-layer_0/tile_data = PackedInt32Array(786443, 0, 0, 851979, 0, 1, 786444, 65536, 0, 851980, 65536, 1, 786445, 0, 0, 851981, 0, 1, 786446, 65536, 0, 851982, 65536, 1, 786447, 0, 0, 851983, 0, 1, 786448, 65536, 0, 851984, 65536, 1, 786449, 0, 0, 851985, 0, 1, 786450, 65536, 0, 851986, 65536, 1, 786451, 0, 0, 851987, 0, 1, 786452, 65536, 0, 851988, 65536, 1, 786453, 0, 0, 851989, 0, 1, 786454, 65536, 0, 851990, 65536, 1, 786455, 0, 0, 851991, 0, 1, 786456, 65536, 0, 851992, 65536, 1, 786457, 0, 0, 851993, 0, 1, 786458, 65536, 0, 851994, 65536, 1, 786459, 0, 0, 851995, 0, 1, 786460, 65536, 0, 851996, 65536, 1, 786461, 0, 0, 851997, 0, 1, 786462, 65536, 0, 851998, 65536, 1, 786463, 0, 0, 851999, 0, 1, 786464, 65536, 0, 852000, 65536, 1, 786465, 0, 0, 852001, 0, 1, 786466, 65536, 0, 852002, 65536, 1, 786467, 0, 0, 852003, 0, 1, 786468, 65536, 0, 852004, 65536, 1, 786469, 0, 0, 852005, 0, 1, 786470, 65536, 0, 852006, 65536, 1, 786471, 0, 0, 852007, 0, 1, 786472, 65536, 0, 852008, 65536, 1, 786473, 0, 0, 852009, 0, 1, 786474, 65536, 0, 852010, 65536, 1, 786475, 0, 0, 852011, 0, 1, 786476, 65536, 0, 852012, 65536, 1, 786477, 0, 0, 852013, 0, 1, 786478, 65536, 0, 852014, 65536, 1, 1310731, 0, 0, 1376267, 0, 1, 1310732, 65536, 0, 1376268, 65536, 1, 1310733, 0, 0, 1376269, 0, 1, 1310734, 65536, 0, 1376270, 65536, 1, 1310735, 0, 0, 1376271, 0, 1, 1310736, 65536, 0, 1376272, 65536, 1, 1310737, 0, 0, 1376273, 0, 1, 1310738, 65536, 0, 1376274, 65536, 1, 1310739, 0, 0, 1376275, 0, 1, 1310740, 65536, 0, 1376276, 65536, 1, 1310741, 0, 0, 1376277, 0, 1, 1310742, 65536, 0, 1376278, 65536, 1, 1310743, 0, 0, 1376279, 0, 1, 1310744, 65536, 0, 1376280, 65536, 1, 1310745, 0, 0, 1376281, 0, 1, 1310746, 65536, 0, 1376282, 65536, 1, 1310747, 0, 0, 1376283, 0, 1, 1310748, 65536, 0, 1376284, 65536, 1, 1310749, 0, 0, 1376285, 0, 1, 1310750, 65536, 0, 1376286, 65536, 1, 1310751, 0, 0, 1376287, 0, 1, 1310752, 65536, 0, 1376288, 65536, 1, 1310753, 0, 0, 1376289, 0, 1, 1310754, 65536, 0, 1376290, 65536, 1, 1310755, 0, 0, 1376291, 0, 1, 1310756, 65536, 0, 1376292, 65536, 1, 1310757, 0, 0, 1376293, 0, 1, 1310758, 65536, 0, 1376294, 65536, 1, 1310759, 0, 0, 1376295, 0, 1, 1310760, 65536, 0, 1376296, 65536, 1, 1310761, 0, 0, 1376297, 0, 1, 1310762, 65536, 0, 1376298, 65536, 1, 1310763, 0, 0, 1376299, 0, 1, 1310764, 65536, 0, 1376300, 65536, 1, 1310765, 0, 0, 1376301, 0, 1, 1310766, 65536, 0, 1376302, 65536, 1, 1310767, 0, 0, 1376303, 0, 1, 1310768, 65536, 0, 1376304, 65536, 1, 1310769, 0, 0, 1376305, 0, 1, 1835019, 0, 0, 1900555, 0, 1, 1835020, 65536, 0, 1900556, 65536, 1, 1835021, 0, 0, 1900557, 0, 1, 1835022, 65536, 0, 1900558, 65536, 1, 1835023, 0, 0, 1900559, 0, 1, 1835024, 65536, 0, 1900560, 65536, 1, 1835025, 0, 0, 1900561, 0, 1, 1835026, 65536, 0, 1900562, 65536, 1, 1835027, 0, 0, 1900563, 0, 1, 1835028, 65536, 0, 1900564, 65536, 1, 1835029, 0, 0, 1900565, 0, 1, 1835030, 65536, 0, 1900566, 65536, 1, 1835031, 0, 0, 1900567, 0, 1, 1835032, 65536, 0, 1900568, 65536, 1, 1835033, 0, 0, 1900569, 0, 1, 1835034, 65536, 0, 1900570, 65536, 1, 1835035, 0, 0, 1900571, 0, 1, 1835036, 65536, 0, 1900572, 65536, 1, 1835037, 0, 0, 1900573, 0, 1, 1835038, 65536, 0, 1900574, 65536, 1, 1835039, 0, 0, 1900575, 0, 1, 1835040, 65536, 0, 1900576, 65536, 1, 1835041, 0, 0, 1900577, 0, 1, 1835042, 65536, 0, 1900578, 65536, 1, 1835043, 0, 0, 1900579, 0, 1, 1835044, 65536, 0, 1900580, 65536, 1, 1835045, 0, 0, 1900581, 0, 1, 1835046, 65536, 0, 1900582, 65536, 1, 1835047, 0, 0, 1900583, 0, 1, 1835048, 65536, 0, 1900584, 65536, 1, 1835049, 0, 0, 1900585, 0, 1, 1835050, 65536, 0, 1900586, 65536, 1, 1835051, 0, 0, 1900587, 0, 1, 1835052, 65536, 0, 1900588, 65536, 1, 1835053, 0, 0, 1900589, 0, 1, 1835054, 65536, 0, 1900590, 65536, 1, 1835055, 0, 0, 1900591, 0, 1, 1835056, 65536, 0, 1900592, 65536, 1, 1835057, 0, 0, 1900593, 0, 1, 1835058, 65536, 0, 1900594, 65536, 1, 1835059, 0, 0, 1900595, 0, 1, 1835060, 65536, 0, 1900596, 65536, 1, 1835061, 0, 0, 1900597, 0, 1, 1835017, 0, 0, 1900553, 0, 1, 1835018, 65536, 0, 1900554, 65536, 1, 1310729, 0, 0, 1376265, 0, 1, 1310730, 65536, 0, 1376266, 65536, 1, 786441, 0, 0, 851977, 0, 1, 786442, 65536, 0, 851978, 65536, 1, 851975, 0, 1, 851976, 65536, 1, 786439, 0, 1, 786440, 65536, 1, 720903, 0, 1, 720904, 65536, 1, 655367, 0, 1, 655368, 65536, 1, 589831, 0, 1, 589832, 65536, 1, 524295, 0, 1, 524296, 65536, 1, 1376263, 0, 1, 1376264, 65536, 1, 1310727, 0, 1, 1310728, 65536, 1, 1245191, 0, 1, 1245192, 65536, 1, 1179655, 0, 1, 1179656, 65536, 1, 1114119, 0, 1, 1114120, 65536, 1, 1900551, 0, 1, 1900552, 65536, 1, 1835015, 0, 1, 1835016, 65536, 1, 1769479, 0, 1, 1769480, 65536, 1, 1703943, 0, 1, 1703944, 65536, 1, 1638407, 0, 1, 1638408, 65536, 1)
-
-[node name="SatisfiedCustomers" type="Area2D" parent="SubViewport/TapperView"]
-position = Vector2(136, 296)
-collision_layer = 32
-collision_mask = 16
-script = ExtResource("12_a6tvt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/SatisfiedCustomers"]
-shape = SubResource("RectangleShape2D_2bly2")
-debug_color = Color(0.945098, 0.113725, 0.505882, 0.419608)
-
-[node name="Trash" type="Sprite2D" parent="SubViewport/TapperView"]
-position = Vector2(920, 536)
-scale = Vector2(2, 2)
-texture = ExtResource("13_6e0qq")
-
-[node name="Label" type="Label" parent="SubViewport/TapperView/Trash"]
-offset_left = -64.0
-offset_top = -12.0
-offset_right = -20.0
-offset_bottom = 11.0
-text = "Trash"
-
-[node name="delete" type="Area2D" parent="SubViewport/TapperView"]
-position = Vector2(888, 536)
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("14_ceg2y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/delete"]
-shape = SubResource("RectangleShape2D_58hl1")
-debug_color = Color(0.854902, 0.309804, 0.513726, 0.419608)
-
-[node name="delete2" type="Area2D" parent="SubViewport/TapperView"]
-position = Vector2(80, 296)
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("14_ceg2y")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/delete2"]
-shape = SubResource("RectangleShape2D_wjl65")
-debug_color = Color(0.854902, 0.309804, 0.513726, 0.419608)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport/TapperView"]
-offset_left = 176.0
-offset_top = 504.0
-offset_right = 216.0
-offset_bottom = 544.0
-scale = Vector2(2, 2)
-max_value = 30.0
-fill_mode = 4
-texture_under = ExtResource("15_hv7bl")
-texture_over = ExtResource("16_gvjur")
-texture_progress = ExtResource("17_28xlx")
-script = ExtResource("18_bwbk4")
-
-[node name="Label" type="Label" parent="SubViewport/TapperView/TextureProgressBar"]
-layout_mode = 0
-offset_left = 36.0
-offset_top = 4.0
-offset_right = 115.0
-offset_bottom = 27.0
-text = "< Fill to win"
-
-[node name="Area2D" type="Area2D" parent="SubViewport/TapperView/TextureProgressBar"]
-position = Vector2(0, 8)
-collision_layer = 16
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/TextureProgressBar/Area2D"]
-shape = SubResource("RectangleShape2D_hleo4")
-debug_color = Color(0, 0.627451, 0.505882, 0.419608)
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport/TapperView"]
-visible = false
-offset_left = 1000.0
-offset_top = 152.0
-offset_right = 1004.0
-offset_bottom = 179.0
-max_value = 30.0
-step = 1.0
-fill_mode = 1
-
-[node name="Area2D" type="Area2D" parent="SubViewport/TapperView/ProgressBar"]
-position = Vector2(0, 8)
-collision_layer = 16
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/ProgressBar/Area2D"]
-shape = SubResource("RectangleShape2D_hleo4")
-debug_color = Color(0, 0.627451, 0.505882, 0.419608)
-
-[node name="Crockpot" type="Area2D" parent="SubViewport/TapperView"]
-visible = false
-position = Vector2(832, 112)
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("19_0veql")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/Crockpot"]
-shape = SubResource("RectangleShape2D_o45p6")
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/TapperView/Crockpot"]
-position = Vector2(0, -2)
-scale = Vector2(2, 2)
-texture = ExtResource("20_iqg8t")
-hframes = 5
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport/TapperView/Crockpot"]
-offset_left = -16.0
-offset_top = -32.0
-offset_right = 16.0
-max_value = 15.0
-fill_mode = 4
-texture_under = ExtResource("15_hv7bl")
-texture_progress = ExtResource("17_28xlx")
-
-[node name="StockPot" type="Area2D" parent="SubViewport/TapperView"]
-position = Vector2(832, 112)
-collision_layer = 16
-collision_mask = 32
-script = ExtResource("21_cdsi3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/TapperView/StockPot"]
-shape = SubResource("RectangleShape2D_o45p6")
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport/TapperView/StockPot"]
-position = Vector2(160, 192)
-scale = Vector2(2, 2)
-texture = ExtResource("22_fvu7f")
-hframes = 3
-
-[node name="Sprite2D2" type="Sprite2D" parent="SubViewport/TapperView/StockPot"]
-position = Vector2(96, 200)
-scale = Vector2(2, 2)
-texture = ExtResource("23_p4yfl")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport/TapperView/StockPot"]
-offset_left = 144.0
-offset_top = 128.0
-offset_right = 176.0
-offset_bottom = 160.0
-max_value = 15.0
-fill_mode = 4
-texture_under = ExtResource("15_hv7bl")
-texture_progress = ExtResource("17_28xlx")
-
-[node name="InventoryItem" parent="SubViewport/TapperView/StockPot" instance=ExtResource("6_7mt4i")]
-offset_left = 160.0
-offset_top = 200.0
-offset_right = 200.0
-offset_bottom = 240.0
-scale = Vector2(0.5, 0.5)
-
-[node name="Beast2" parent="SubViewport/TapperView" instance=ExtResource("23_ok6u6")]
-
 [node name="Camera2D2" type="Camera2D" parent="SubViewport"]
 position = Vector2(-640, 208)
 zoom = Vector2(0.8, 0.8)
+
+[node name="TapperView" parent="SubViewport" instance=ExtResource("7_wfv7y")]
+position = Vector2(-1096, -32)
+scale = Vector2(0.8, 0.8)
 
 [node name="drop" parent="." instance=ExtResource("4_xvj4h")]
 position = Vector2(472, 56)

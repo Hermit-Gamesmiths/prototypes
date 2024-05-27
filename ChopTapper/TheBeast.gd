@@ -27,9 +27,11 @@ func add_food():
 		or color_combo == GameEvents.ColorCombo.SUPER_GREY \
 		or color_combo == GameEvents.ColorCombo.SUPER_PURPLE:
 			$"../Beast/InventoryItem".set_sprites_to_super()
+		GameEvents.freeze.emit(color_combo)
+		
+		
 		GameEvents.remove_last_inventory_item.emit()
-		$TextureProgressBar.value += 1
-		if $TextureProgressBar.value == $TextureProgressBar.max_value:
-			GameEvents.win_game.emit()
+		
+		
 
 

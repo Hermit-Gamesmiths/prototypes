@@ -16,9 +16,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if not GameEvents.is_on_tapper_scene:
-		if player_overlapping and Input.is_action_just_pressed("down") and not cooking:
+		if player_overlapping and Input.is_action_just_pressed("attack") and not cooking:
 			add_food()
-		elif player_overlapping and Input.is_action_just_pressed("down") and done_cooking:
+		elif player_overlapping and Input.is_action_just_pressed("attack") and done_cooking:
 			harvest()
 			done_cooking = false
 			cooking = false

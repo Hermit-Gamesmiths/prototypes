@@ -1,4 +1,4 @@
-class_name Customer
+class_name BigCustomer
 extends Area2D
 
 
@@ -26,7 +26,10 @@ var freeze_time := 8.0
 var shake = false
 var shake_time := 1.0
 
+var stomach := 0
+
 func _ready():
+	
 	GameEvents.freeze.connect(freeze_color)
 	GameEvents.lose_game.connect(on_game_lose)
 	GameEvents.win_game.connect(on_game_win)
@@ -53,10 +56,13 @@ func reset_sprite_color():
 	match color_choice:
 		ColorType.RED:
 			$Sprite2D.modulate = Color(1, 0, 0)  # Red
+			$Node2D.modulate = Color(1, 0, 0)  # Red
 		ColorType.GREEN:
 			$Sprite2D.modulate = Color(0, 1, 0)  # Green
+			$Node2D.modulate = Color(0, 1, 0)  # Green
 		ColorType.GREY:
 			$Sprite2D.modulate = Color(0.5, 0.5, 0.5)  # Grey
+			$Node2D.modulate = Color(0.5, 0.5, 0.5)  # Grey
 	
 
 
@@ -84,14 +90,19 @@ func _on_area_entered(area):
 					area.super_food -= 1
 				else:
 					area.call_deferred("queue_free")
-				$face.frame = 1
-				$face.visible = true
-				run_away = true
-				eaten = true
-				await get_tree().create_timer(run_away_time).timeout
-				$face.visible = false
-				run_away = false
-				eaten = false
+
+				stomach += 1
+				if stomach >= 3:
+					$face.frame = 1
+					$face.visible = true
+					run_away = true
+					eaten = true
+					await get_tree().create_timer(run_away_time).timeout
+					$face.visible = false
+					run_away = false
+					eaten = false
+				else:
+					add_food_to_stomach()
 			else:
 				area.call_deferred("queue_free")
 				$face.frame = 0
@@ -101,7 +112,14 @@ func _on_area_entered(area):
 				$face.visible = false
 				speed = base_speed
 		
+func add_food_to_stomach():
 
+	for child in $Node2D.get_children():
+		if child.frame == 0:
+			child.frame = 1
+			break
+	
+	
 func pay_and_leave():
 	if not end_game:
 		var coinscene = load("res://coin.tscn").instantiate()
