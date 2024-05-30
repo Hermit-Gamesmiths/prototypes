@@ -1,24 +1,19 @@
 extends StaticBody2D
+class_name Enemy
 
-enum ColorType { RED, GREEN, GREY, PURPLE }
+enum ColorType {RED, GREEN, GREY, PURPLE}
 
 var value: int
 var health: int
-var color_choice
+var color_choice: ColorType
+var set_color: Variant # Blech
 
 func _ready():
+	if set_color != null:
+		color_choice = set_color as ColorType
+	else:
+		randomize_color()
 
-	# Generate a random number between 0 and 2 to represent the color choice
-	var random_color = randi() % 3
-
-	# Assign the color based on the random number
-	match random_color:
-		0:
-			color_choice = ColorType.RED
-		1:
-			color_choice = ColorType.GREEN
-		2:
-			color_choice = ColorType.GREY
 	if GameEvents.purple_counter <= 0:
 		color_choice = ColorType.PURPLE
 		GameEvents.purple_counter = GameEvents.amount_until_purple
@@ -27,13 +22,13 @@ func _ready():
 
 	match color_choice:
 		ColorType.RED:
-			$Sprite2D.modulate = Color(1, 0, 0)  # Red
+			$Sprite2D.modulate = Color(1, 0, 0) # Red
 		ColorType.GREEN:
-			$Sprite2D.modulate = Color(0, 1, 0)  # Green
+			$Sprite2D.modulate = Color(0, 1, 0) # Green
 		ColorType.GREY:
-			$Sprite2D.modulate = Color(0.5, 0.5, 0.5)  # Grey
+			$Sprite2D.modulate = Color(0.5, 0.5, 0.5) # Grey
 		ColorType.PURPLE:
-			$Sprite2D.modulate = Color(0.75, 0, 1)  # Grey
+			$Sprite2D.modulate = Color(0.75, 0, 1) # Grey
 
 	value = randi_range(5, 10)
 	if value <= 6:
@@ -46,6 +41,19 @@ func _ready():
 		health = 4
 		$Sprite2D.frame = 0
 	$Hurtbox.area_entered.connect(_on_area_entered)
+
+func randomize_color():
+	# Generate a random number between 0 and 2 to represent the color choice
+	var random_color = randi() % 3
+
+	# Assign the color based on the random number
+	match random_color:
+		0:
+			color_choice = ColorType.RED
+		1:
+			color_choice = ColorType.GREEN
+		2:
+			color_choice = ColorType.GREY
 
 func _process(delta):
 	pass
@@ -87,6 +95,5 @@ func _on_area_entered(area):
 							drop_scene.setSpriteColors(GameEvents.ColorCombo.GREY_GREY)
 				ColorType.PURPLE:
 					drop_scene.setSpriteColors(GameEvents.ColorCombo.PURPLE_PURPLE)
-					
-					
+
 			queue_free()

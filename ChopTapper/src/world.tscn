@@ -576,6 +576,7 @@ position = Vector2(328, 88)
 
 [node name="Spawn6" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(752, 376)
+color_preference = 2
 
 [node name="Spawn10" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(768, 376)
@@ -591,36 +592,47 @@ position = Vector2(368, 168)
 
 [node name="Spawn9" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(520, 104)
+color_preference = 1
 
 [node name="Spawn13" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(624, 248)
+color_preference = 1
 
 [node name="Spawn40" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(440, 232)
+color_preference = 1
 
 [node name="Spawn18" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(424, 232)
+color_preference = 1
 
 [node name="Spawn33" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(328, 344)
+color_preference = 2
 
 [node name="Spawn34" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(640, 248)
+color_preference = 1
 
 [node name="Spawn36" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(688, 152)
+color_preference = 1
 
 [node name="Spawn39" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(672, 152)
+color_preference = 1
 
 [node name="Spawn24" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(208, 392)
+color_preference = 2
 
 [node name="Spawn27" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(64, 360)
+color_preference = 2
 
 [node name="Spawn29" parent="." instance=ExtResource("4_dpahn")]
 position = Vector2(160, 280)
+color_preference = 2
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(700, 350)
