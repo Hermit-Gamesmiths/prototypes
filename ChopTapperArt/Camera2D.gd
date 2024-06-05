@@ -1,11 +1,9 @@
 extends Camera2D
 
+@export var parallax_background: NodePath
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(delta: float) -> void:
+	if parallax_background:
+		var parallax_node = get_node(parallax_background)
+		if parallax_node is ParallaxBackground:
+			parallax_node.scroll_offset = -global_position

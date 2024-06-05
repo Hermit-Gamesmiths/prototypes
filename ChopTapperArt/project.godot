@@ -21,7 +21,7 @@ BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addons/collapse_expand_children/plugin.cfg", "res://addons/collapse_folders/plugin.cfg")
 
 [rendering]
 
